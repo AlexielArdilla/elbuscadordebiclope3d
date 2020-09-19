@@ -13,7 +13,7 @@
 
 <body>
     <div class="container mt-5">
-        <h1>El buscador de Bíclope 3D:---> <a href="https://biclope3d.online">(VOLVER?)</a></h1>
+        <h1>El buscador de Bíclope 3D:---> <a id="volver" href="https://biclope3d.online">(VOLVER?)</a></h1>
         <input type="text" id="formulario" class="form-control my-2">
         <h4>Buscá por palabra clave: Ej: si querés "Bob esponja", busca "bob" o "esponja".</h4>
         <div class="row portfolio-container" id="resultado">
@@ -109,11 +109,18 @@
 
             resultado.innerHTML = '';
 
+            let counter =0;
+
             const texto = formulario.value.toLowerCase();
             for (let producto of productos) {
 
                 let nombre = producto.nombre.toLowerCase();
                 if (nombre.indexOf(texto) !== -1) {
+
+                    counter++;
+                    if(counter>=10){
+                        break;
+                    }
 
                     resultado.innerHTML += ` 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-card">
